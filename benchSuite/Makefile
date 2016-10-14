@@ -1,6 +1,6 @@
-#Tested with JDK 1.8.0_66
-# make sure that JDK and JDK_PATH are OK. 
-# I assuming that you have it in  ~/.bin. Please change it otherwise
+# Tested with JDK 1.8.0_66
+# Make sure that JDK and JDK_PATH are OK. 
+# I assuming that you have Java in  ~/.bin directory. Please change it otherwise.
 
 JDK_PATH = ~/.bin
 JDK = jdk1.8.0_66/bin
