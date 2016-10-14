@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 
 public class MultiThreadBenchRunner {
    
-    private final static int [] THREADS = {1, 8, 16, 24, 32, 40}; 
+    private final static int [] THREADS = {1, 8, 16, 24, 32}; 
     private final static int RUNS = 20;
     private final static int WARMUP_RUNS = 5;
 
