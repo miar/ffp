@@ -1,11 +1,9 @@
-<p align="center">
+
+<div align="center">
 ![FFP image](./pres.gif)
-</p>
+</div>
 
-
-
-
-Free Fixed Persistent Hash Map (FFP)
+Lock-Free Fixed Persistent Hash Map (FFP)
 
 Steps to compare Concurrent Hash Maps, Concurrent Skip Lists, Non-Blocking Hash Maps, Concurrent Tries and FFP models in Linux:
 
