@@ -1,10 +1,6 @@
-
 <div align="center">
 <img src="./pres.gif" />
 </div>
-
-
-![FFP image](./pres.gif)
 
 Lock-Free Fixed Persistent Hash Map (FFP)
 
