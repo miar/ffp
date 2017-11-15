@@ -1,6 +1,5 @@
-
 <p align="center">
-<img src="./pres.gif">
+![FFP image](./pres.gif)
 </p>
 
 
