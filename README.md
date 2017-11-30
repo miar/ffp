@@ -24,6 +24,4 @@ appear in the 'tmp' directory
 5. If you want to see how our model is implemented check the 'ffp'
 directory.
 
-Thank you for using our system.
-
-We hope you enjoy it.
+Enjoy it.
