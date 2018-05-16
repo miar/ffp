@@ -208,8 +208,8 @@ public class FFPHashMap <E, V>  {
 
    	/* avoiding the temporary cicles in hashes/nodes */
 	Object [] jump_hash = jump_prev_hash ((Object []) chain_next, curr_hash);
-
-	insert_bucket_array(jump_hash, adjust_node, (n_shifts + 1)); 
+	if (jump_hash != null)
+	    insert_bucket_array(jump_hash, adjust_node, (n_shifts + 1)); 
 	return;
     }
     
@@ -354,8 +354,9 @@ public class FFPHashMap <E, V>  {
 	
 	/* avoiding the temporary cicles in hashes/nodes */
 	Object [] jump_hash = jump_prev_hash ((Object []) chain_next, curr_hash);
-
-        return check_insert_bucket_array(jump_hash, h, t, v, (n_shifts + 1));      
+	if (jump_hash != null)
+	    return check_insert_bucket_array(jump_hash, h, t, v, (n_shifts + 1));      
+	return null;
     }
 
     private FFPAnsNode<E,V> check_insert_bucket_array(Object [] curr_hash, 
@@ -477,8 +478,9 @@ public class FFPHashMap <E, V>  {
 
 	/* avoiding the temporary cicles in hashes/nodes */
 	Object [] jump_hash = jump_prev_hash ((Object []) chain_next, curr_hash);
-
-    	return check_bucket_array(jump_hash, h, t, (n_shifts + 1));
+	if (jump_hash != null)
+	    return check_bucket_array(jump_hash, h, t, (n_shifts + 1));
+	return null;
     }     
 
 
@@ -572,7 +574,9 @@ public class FFPHashMap <E, V>  {
 	}
 	/* avoiding the temporary cicles in hashes/nodes */
 	Object [] jump_hash = jump_prev_hash ((Object []) chain_next, curr_hash);
-    	return check_delete_bucket_array(jump_hash, h, t, (n_shifts + 1));
+	if (jump_hash != null)
+	    return check_delete_bucket_array(jump_hash, h, t, (n_shifts + 1));
+	return null;
     }     
 
     private FFPAnsNode<E,V> delete_bucket_chain(Object [] curr_hash, 
@@ -592,7 +596,9 @@ public class FFPHashMap <E, V>  {
     		   pointer in the chain of curr_hash will be corrected
     		   by the adjust_chain_nodes procedure */
 		Object [] jump_hash = jump_prev_hash ((Object []) chain_curr, curr_hash);
-    		return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		if (jump_hash != null)
+		    return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		return null;
     	    }
 	    
 
@@ -607,7 +613,9 @@ public class FFPHashMap <E, V>  {
     		   pointer in the chain of curr_hash will be corrected
     		   by the adjust_chain_nodes procedure */
 		Object [] jump_hash = jump_prev_hash ((Object []) chain_curr, curr_hash);
-    		return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		if (jump_hash != null)
+		    return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		return null;
     	    }
 
     	    Object chain_prev_valid_candidate = curr_hash;
@@ -633,7 +641,9 @@ public class FFPHashMap <E, V>  {
 		    return null;
 		else {
 		    Object [] jump_hash = jump_prev_hash ((Object []) chain_curr, curr_hash);
-		    return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		    if (jump_hash != null)
+			return delete_bucket_chain(jump_hash, chain_node, (n_shifts + 1));
+		    return null;
 		}		    
     	    } else /* FFPAnsNode.class.cast(chain_curr) == chain_node */ {
 		if (chain_prev_valid_candidate == curr_hash) {
@@ -956,11 +966,14 @@ public class FFPHashMap <E, V>  {
 	Object []  jump_hash, prev_hash;
 	jump_hash =  curr_hash;
 	prev_hash = (Object []) curr_hash[BASE_HASH_BUCKETS];
-	while(prev_hash != stop_hash) {
+	while(prev_hash != null && prev_hash != stop_hash) {
 	    jump_hash = prev_hash;
 	    prev_hash = (Object []) jump_hash[BASE_HASH_BUCKETS];
 	}
-	return jump_hash;
+	if (prev_hash == null)
+	    return null;
+	else
+	    return jump_hash;
     }
 }
 
